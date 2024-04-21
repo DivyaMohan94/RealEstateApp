@@ -5,7 +5,7 @@ import HomeCard from "./HomeCard";
 import Paginate from "./Paginate";
 import "../Styles/Searchbar.css";
 
-export default function SearchResult({searchResult}) {
+export default function SearchResult({ searchResult }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
 
@@ -42,22 +42,21 @@ export default function SearchResult({searchResult}) {
     <div>
       <Typography variant="h3">Browse Homes</Typography>
       <div className="max-w-[1600px] mx-auto grid md:grid-cols-4 gap-8">
-        {currentPosts.length > 0 && (
+        {currentPosts.length > 0 &&
           currentPosts.map((home) => {
             return <HomeCard home={home} id={home.id} />;
-          })
-        )}
+          })}
       </div>
       {currentPosts.length > 0 ? (
-      <Paginate
-        postsPerPage={postsPerPage}
-        totalPosts={searchResult.length}
-        currentPage={currentPage}
-        paginate={paginate}
-        previousPage={previousPage}
-        nextPage={nextPage}
-      />
-    ) : (
+        <Paginate
+          postsPerPage={postsPerPage}
+          totalPosts={searchResult.length}
+          currentPage={currentPage}
+          paginate={paginate}
+          previousPage={previousPage}
+          nextPage={nextPage}
+        />
+      ) : (
         <Typography variant="h5">No data found! Refine your search.</Typography>
       )}
     </div>

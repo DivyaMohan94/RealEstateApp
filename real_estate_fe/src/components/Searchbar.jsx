@@ -9,50 +9,50 @@ export default function Searchbar({ setSearchResult }) {
     keys: [
       {
         name: "address",
-        weight: 0.5
+        weight: 0.5,
       },
       {
         name: "zip",
-        weight: 0.5
+        weight: 0.5,
       },
       {
         name: "price",
-        weight: 0.5
+        weight: 0.5,
       },
       {
         name: "beds",
-        weight: 0.5
+        weight: 0.5,
       },
       {
         name: "bath",
-        weight: 0.5
+        weight: 0.5,
       },
       {
         name: "sqft",
-        weight: 0.5
+        weight: 0.5,
       },
       {
         name: "build",
-        weight: 0.5
+        weight: 0.5,
       },
       {
         name: "tags",
-        weight: 1
+        weight: 1,
       },
       {
         name: "description",
-        weight: 0.8
+        weight: 0.8,
       },
     ],
     threshold: 0,
-    ignoreLocation:true,
+    ignoreLocation: true,
     distance: 100,
     includeMatches: true,
     includeScore: true,
     minMatchCharLength: 2,
     findAllMatches: true,
     shouldSort: true,
-    ignoreFieldNorm: true, 
+    ignoreFieldNorm: true,
   };
 
   const onSearch = (e) => {
