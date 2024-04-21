@@ -68,7 +68,7 @@ export default function HomeCard({ home }) {
                 <div className="relative p-6 flex-auto">
                   <Typography variant="h6">
                     {home.price} | {home.beds} Beds | {home.bath} Baths |{" "}
-                    {home.sqft} sqft
+                    {home.sqft} sqft | Built in {home.build}
                   </Typography>
                 </div>
                 <div

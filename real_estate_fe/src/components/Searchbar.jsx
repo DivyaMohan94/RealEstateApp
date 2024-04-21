@@ -1,15 +1,79 @@
 import "../Styles/Searchbar.css";
-import { Button, Input } from "@material-tailwind/react";
 import React, { useState } from "react";
+import data from "../assets/data.json";
+import Fuse from "fuse.js";
 
-export default function Searchbar() {
+export default function Searchbar({ setSearchResult }) {
   const [searchInput, setSearchInput] = useState("");
+  const options = {
+    keys: [
+      {
+        name: "address",
+        weight: 0.5
+      },
+      {
+        name: "zip",
+        weight: 0.5
+      },
+      {
+        name: "price",
+        weight: 0.5
+      },
+      {
+        name: "beds",
+        weight: 0.5
+      },
+      {
+        name: "bath",
+        weight: 0.5
+      },
+      {
+        name: "sqft",
+        weight: 0.5
+      },
+      {
+        name: "build",
+        weight: 0.5
+      },
+      {
+        name: "tags",
+        weight: 1
+      },
+      {
+        name: "description",
+        weight: 0.8
+      },
+    ],
+    threshold: 0,
+    ignoreLocation:true,
+    distance: 100,
+    includeMatches: true,
+    includeScore: true,
+    minMatchCharLength: 2,
+    findAllMatches: true,
+    shouldSort: true,
+    ignoreFieldNorm: true, 
+  };
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    if (searchInput === "") {
+      setSearchResult(data.homes);
+    } else {
+      const fus = new Fuse(data.homes, options);
+      const searchResult = fus.search(searchInput);
+      const res = searchResult.map((data) => {
+        return data.item;
+      });
+      console.log(searchResult);
+      setSearchResult(res);
+    }
+  };
+
   return (
     <div className="contain">
-      <form className="max-w-lg mx-auto">
-        <label
-          className="mb-2 text-sm font-medium text-gray-900 sr-only"
-        >
+      <form className="max-w-lg mx-auto" onSubmit={(e) => onSearch(e)}>
+        <label className="mb-2 text-sm font-medium text-gray-900 sr-only">
           Search
         </label>
         <div className="relative">
@@ -35,13 +99,14 @@ export default function Searchbar() {
             id="search"
             className="block w-full p-4 ps-10 text-md text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Search for City, Zip, Neighborhood, Features..."
-            style = {{width:"500px"}}
+            style={{ width: "500px" }}
+            onChange={(e) => {
+              setSearchInput(e.target.value);
+            }}
+            value={searchInput}
           />
 
-          <button
-            type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
-          >
+          <button className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
             Search
           </button>
         </div>

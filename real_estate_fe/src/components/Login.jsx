@@ -9,8 +9,8 @@ import {
   import "../Styles/Login.css"
 
 export default function Login(){
-    const [email, setEmail] = useState("");
-    const [passowrd, setPassword] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [passowrd, setPassword] = useState("");
     return (
         <Card color="transparent" shadow={false} className = "card">
          <Typography variant="h4" color="blue-gray">
