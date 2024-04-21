@@ -1,0 +1,15 @@
+.contain {
+  height: 360px;
+  padding: 0;
+  background-image: url("../assets/search_bg.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search:focus {
+  outline: none !important;
+  border: ring-blue-300;
+  box-shadow: 0 0 10px #719ece;
+}
