@@ -12,7 +12,7 @@ This command will start a local development server and run the React project in 
  I have integrated Fuse.js into my React application to provide advanced search functionality. 
  Fuse.js offers powerful features such as fuzzy search, enabling users to find relevant results even when their query is not an exact match. 
 
-In this app, the key attributes you can search for include tags, description, address, zip code, year built, number of beds, and number of baths. I have used leverage Fuse.js to perform searches across all of these fields, generating results based on their relevance and score.
+In this app, the key attributes you can search for include tags, description, address, zip code, year built, number of beds, and number of baths. I have used Fuse.js to perform searches across all of these fields, generating results based on their relevance and score.
 
 For example, 
 
